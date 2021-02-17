@@ -243,7 +243,7 @@ end
 
 
 
--- biomes
+-- biomes in test!
 minetest.register_biome({
   name = "WarpedForest",
   node_filler = "mcl_nether:netherrack",
