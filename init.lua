@@ -83,6 +83,7 @@ minetest.register_node("mcl_mushroom:warped_nylium", {
   stack_max = 64,
   _mcl_hardness = 0.4,
   _mcl_blast_resistance = 0.4,
+  is_ground_content = true,
 })
 
 minetest.register_node("mcl_mushroom:warped_hyphae_wood", {
@@ -197,6 +198,7 @@ minetest.register_node("mcl_mushroom:crimson_nylium", {
   stack_max = 64,
   _mcl_hardness = 0.4,
   _mcl_blast_resistance = 0.4,
+  is_ground_content = true,
 })
 
 
@@ -489,3 +491,68 @@ minetest.register_decoration({
   decoration = "mcl_mushroom:warped_fungus",
 })
 ]]
+minetest.register_ore({
+  ore_type        = "sheet",
+  ore             = "mcl_mushroom:warped_nylium",
+  -- Note: Stone is included only for v6 mapgen support. Netherrack is not generated naturally
+  -- in v6, but instead set with the on_generated function in mcl_mapgen_core.
+  wherein         = {"mcl_nether:netherrack", "mcl_core:stone"},
+  clust_scarcity  = 14 * 14 * 14,
+  clust_size      = 10,
+  y_min           = -29065,
+  y_max           = -28940,
+  noise_threshold = 0.0,
+  noise_params    = {
+    offset = 0.5,
+    scale = 0.1,
+    spread = {x = 8, y = 8, z = 8},
+    seed = 4996,
+    octaves = 1,
+    persist = 0.0
+  },
+})
+
+minetest.register_ore({
+  ore_type        = "sheet",
+  ore             = "mcl_mushroom:crimson_nylium",
+  -- Note: Stone is included only for v6 mapgen support. Netherrack is not generated naturally
+  -- in v6, but instead set with the on_generated function in mcl_mapgen_core.
+  wherein         = {"mcl_nether:netherrack", "mcl_core:stone"},
+  clust_scarcity  = 14 * 14 * 14,
+  clust_size      = 10,
+  y_min           = -29065,
+  y_max           = -28940,
+  noise_threshold = 0.0,
+  noise_params    = {
+    offset = 0.5,
+    scale = 0.1,
+    spread = {x = 8, y = 8, z = 8},
+    seed = 9782,
+    octaves = 1,
+    persist = 0.0
+  },
+})
+
+
+minetest.register_decoration({
+    deco_type = "simple",
+    place_on = {"mcl_mushroom:warped_nylium"},
+    sidelen = 16,
+    fill_ratio = 0.1,
+    biomes = {"Nether"},
+    y_max = 28940,
+    y_min = -29065,
+    decoration = "mcl_mushroom:warped_fungus",
+})
+
+
+minetest.register_decoration({
+    deco_type = "simple",
+    place_on = {"mcl_mushroom:crimson_nylium"},
+    sidelen = 16,
+    fill_ratio = 0.1,
+    biomes = {"Nether"},
+    y_max = 28940,
+    y_min = -29065,
+    decoration = "mcl_mushroom:crimson_fungus",
+})
