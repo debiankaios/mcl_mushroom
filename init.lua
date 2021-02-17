@@ -242,7 +242,7 @@ end
 
 
 
-
+--[[
 -- biomes in test!
 minetest.register_biome({
   name = "WarpedForest",
@@ -277,3 +277,4 @@ minetest.register_decoration({
   y_max = -28940 + 80,
   decoration = "mcl_mushroom:warped_fungus",
 })
+]]
