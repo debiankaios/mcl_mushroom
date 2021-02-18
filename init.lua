@@ -92,12 +92,12 @@ minetest.register_node("mcl_mushroom:warped_nylium", {
 
 minetest.register_node("mcl_mushroom:warped_checknode", {
   description = S("Warped Checknode - only to check!"),
-  tiles = {"warped_wart_block.png",
-           "warped_wart_block.png",
-           "warped_wart_block.png",
-           "warped_wart_block.png",
-           "warped_wart_block.png",
-           "warped_wart_block.png",
+  tiles = {"mcl_nether_netherrack.png",
+           "mcl_nether_netherrack.png",
+           "mcl_nether_netherrack.png",
+           "mcl_nether_netherrack.png",
+           "mcl_nether_netherrack.png",
+           "mcl_nether_netherrack.png",
          },
   groups = {pickaxey=1, building_block=1, material_stone=1, not_in_creative_inventory=1},
   paramtype2 = "facedir",
@@ -105,7 +105,7 @@ minetest.register_node("mcl_mushroom:warped_checknode", {
   _mcl_hardness = 0.4,
   _mcl_blast_resistance = 0.4,
   is_ground_content = true,
-  drop = ""
+  drop = "mcl_nether:netherrack"
 })
 
 minetest.register_node("mcl_mushroom:warped_hyphae_wood", {
@@ -261,6 +261,7 @@ minetest.register_node("mcl_mushroom:crimson_checknode", {
   _mcl_hardness = 0.4,
   _mcl_blast_resistance = 0.4,
   is_ground_content = true,
+  drop = "mcl_nether:netherrack"
 })
 
 minetest.register_craft({
@@ -615,16 +616,16 @@ minetest.register_ore({
   -- Note: Stone is included only for v6 mapgen support. Netherrack is not generated naturally
   -- in v6, but instead set with the on_generated function in mcl_mapgen_core.
   wherein         = {"mcl_nether:netherrack", "mcl_core:stone"},
-  clust_scarcity  = 14 * 14 * 14,
+  clust_scarcity  = 10 * 10 * 10,
   clust_size      = 10,
   y_min           = -29065,
   y_max           = -28940,
   noise_threshold = 0.0,
   noise_params    = {
-    offset = 0.5,
-    scale = 0.1,
-    spread = {x = 8, y = 8, z = 8},
-    seed = 9782,
+    offset = 1,
+    scale = 0.5,
+    spread = {x = 12, y = 12, z = 12},
+    seed = 12948,
     octaves = 1,
     persist = 0.0
   },
