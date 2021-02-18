@@ -86,6 +86,23 @@ minetest.register_node("mcl_mushroom:warped_nylium", {
   is_ground_content = true,
 })
 
+minetest.register_node("mcl_mushroom:warped_checknode", {
+  description = "Warped Checknode",
+  tiles = {"warped_wart_block.png",
+           "warped_wart_block.png",
+           "warped_wart_block.png",
+           "warped_wart_block.png",
+           "warped_wart_block.png",
+           "warped_wart_block.png",
+         },
+  groups = {pickaxey=1, building_block=1, material_stone=1, not_in_creative_inventory=1},
+  paramtype2 = "facedir",
+  stack_max = 64,
+  _mcl_hardness = 0.4,
+  _mcl_blast_resistance = 0.4,
+  is_ground_content = true,
+})
+
 minetest.register_node("mcl_mushroom:warped_hyphae_wood", {
   description = "Warped Hyphae",
   tiles = {"warped_hyphae_wood.png"},
@@ -121,6 +138,25 @@ minetest.register_abm({
       if pos.y < -28400 then
         generate_warped_tree(pos)
       end
+    end
+  end
+})
+
+minetest.register_abm({
+	label = "mcl_mushroom:warped_checknode",
+	nodenames = {"mcl_mushroom:warped_checknode"},
+	interval = 0.1,
+	chance = 1,
+	action = function(pos)
+    local nodepos = minetest.get_node({x = pos.x, y = pos.y + 1, z = pos.z})
+    if nodepos.name == "air" then
+      minetest.swap_node({ x = pos.x, y = pos.y, z = pos.z }, { name = "mcl_mushroom:warped_nylium" })
+      local randomg = math.random(1, 40)
+      if randomg == 2 then
+        minetest.set_node({ x = pos.x, y = pos.y + 1, z = pos.z }, { name = "mcl_mushroom:warped_fungus" })
+      end
+    else
+      minetest.swap_node({ x = pos.x, y = pos.y, z = pos.z }, { name = "mcl_nether:netherrack" })
     end
   end
 })
@@ -201,11 +237,27 @@ minetest.register_node("mcl_mushroom:crimson_nylium", {
   is_ground_content = true,
 })
 
+minetest.register_node("mcl_mushroom:crimson_checknode", {
+  description = "Warped Checknode",
+  tiles = {"mcl_nether_netherrack.png",
+           "mcl_nether_netherrack.png",
+           "mcl_nether_netherrack.png",
+           "mcl_nether_netherrack.png",
+           "mcl_nether_netherrack.png",
+           "mcl_nether_netherrack.png",
+         },
+  groups = {pickaxey=1, building_block=1, material_stone=1, not_in_creative_inventory=1},
+  paramtype2 = "facedir",
+  stack_max = 64,
+  _mcl_hardness = 0.4,
+  _mcl_blast_resistance = 0.4,
+  is_ground_content = true,
+})
 
 minetest.register_abm({
 	label = "mcl_mushroom:crimson_fungus",
 	nodenames = {"mcl_mushroom:crimson_fungus"},
-	interval = 1,
+	interval = 0.1,
 	chance = 82,
 	action = function(pos)
     local nodepos = minetest.get_node({x = pos.x, y = pos.y - 1, z = pos.z})
@@ -213,6 +265,25 @@ minetest.register_abm({
       if pos.y < -28400 then
         generate_warped_tree(pos)
       end
+    end
+  end
+})
+
+minetest.register_abm({
+	label = "mcl_mushroom:crimson_checknode",
+	nodenames = {"mcl_mushroom:crimson_checknode"},
+	interval = 0.1,
+	chance = 1,
+	action = function(pos)
+    local nodepos = minetest.get_node({x = pos.x, y = pos.y + 1, z = pos.z})
+    if nodepos.name == "air" then
+      minetest.swap_node({ x = pos.x, y = pos.y, z = pos.z }, { name = "mcl_mushroom:crimson_nylium" })
+      local randomg = math.random(1, 40)
+      if randomg == 2 then
+        minetest.set_node({ x = pos.x, y = pos.y + 1, z = pos.z }, { name = "mcl_mushroom:crimson_fungus" })
+      end
+    else
+      minetest.swap_node({ x = pos.x, y = pos.y, z = pos.z }, { name = "mcl_nether:netherrack" })
     end
   end
 })
@@ -493,7 +564,7 @@ minetest.register_decoration({
 ]]
 minetest.register_ore({
   ore_type        = "sheet",
-  ore             = "mcl_mushroom:warped_nylium",
+  ore             = "mcl_mushroom:warped_checknode",
   -- Note: Stone is included only for v6 mapgen support. Netherrack is not generated naturally
   -- in v6, but instead set with the on_generated function in mcl_mapgen_core.
   wherein         = {"mcl_nether:netherrack", "mcl_core:stone"},
@@ -514,7 +585,7 @@ minetest.register_ore({
 
 minetest.register_ore({
   ore_type        = "sheet",
-  ore             = "mcl_mushroom:crimson_nylium",
+  ore             = "mcl_mushroom:crimson_checknode",
   -- Note: Stone is included only for v6 mapgen support. Netherrack is not generated naturally
   -- in v6, but instead set with the on_generated function in mcl_mapgen_core.
   wherein         = {"mcl_nether:netherrack", "mcl_core:stone"},
