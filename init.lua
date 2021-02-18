@@ -86,7 +86,7 @@ minetest.register_node("mcl_mushroom:warped_nylium", {
   _mcl_hardness = 0.4,
   _mcl_blast_resistance = 0.4,
   is_ground_content = true,
-  drop = "mcl_nether:netherrack"
+  drop = "mcl_nether:netherrack",
   _mcl_silk_touch_drop = true,
 })
 
@@ -242,7 +242,7 @@ minetest.register_node("mcl_mushroom:crimson_nylium", {
   _mcl_hardness = 0.4,
   _mcl_blast_resistance = 0.4,
   is_ground_content = true,
-  drop = "mcl_nether:netherrack"
+  drop = "mcl_nether:netherrack",
   _mcl_silk_touch_drop = true,
 })
 
