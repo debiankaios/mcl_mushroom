@@ -23,7 +23,7 @@ minetest.register_node("mcl_mushroom:warped_fungus", {
 		fixed = { -3/16, -0.5, -3/16, 3/16, -2/16, 3/16 },
 	},
 	node_placement_prediction = "",
-	on_rightclick = function(pos, node, pointed_thing, player)
+	on_rightclick = function(pos, node, pointed_thing, player, itemstack)
     if pointed_thing:get_wielded_item():get_name() == "mcl_dye:white" then
       local nodepos = minetest.get_node({x = pos.x, y = pos.y - 1, z = pos.z})
       if nodepos.name == "mcl_mushroom:warped_nylium" or nodepos.name == "mcl_nether:netherrack" then
@@ -166,6 +166,16 @@ minetest.register_abm({
       minetest.swap_node({ x = pos.x, y = pos.y, z = pos.z }, { name = "mcl_nether:netherrack" })
     end
   end
+})
+
+mobs:spawn({
+  name = "mobs_mc:enderman",
+  nodes = "mcl_mushroom:warped_nylium",
+  max_light = 15,
+  min_light = 0,
+  chance = 300,
+  active_object_count = 20,
+  max_height = -28940,
 })
 
 
@@ -638,7 +648,7 @@ minetest.register_decoration({
     sidelen = 16,
     fill_ratio = 0.1,
     biomes = {"Nether"},
-    y_max = 28940,
+    y_max = -28940,
     y_min = -29065,
     decoration = "mcl_mushroom:warped_fungus",
 })
@@ -650,7 +660,7 @@ minetest.register_decoration({
     sidelen = 16,
     fill_ratio = 0.1,
     biomes = {"Nether"},
-    y_max = 28940,
+    y_max = -28940,
     y_min = -29065,
     decoration = "mcl_mushroom:crimson_fungus",
 })
