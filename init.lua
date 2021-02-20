@@ -161,6 +161,9 @@ minetest.register_abm({
       local randomg = math.random(1, 40)
       if randomg == 2 then
         minetest.set_node({ x = pos.x, y = pos.y + 1, z = pos.z }, { name = "mcl_mushroom:warped_fungus" })
+      elseif randomg == 7 then
+        local pos1 = { x = pos.x, y = pos.y + 1, z = pos.z }
+        generate_warped_tree(pos1)
       end
     else
       minetest.swap_node({ x = pos.x, y = pos.y, z = pos.z }, { name = "mcl_nether:netherrack" })
@@ -318,6 +321,9 @@ minetest.register_abm({
       local randomg = math.random(1, 40)
       if randomg == 2 then
         minetest.set_node({ x = pos.x, y = pos.y + 1, z = pos.z }, { name = "mcl_mushroom:crimson_fungus" })
+      elseif randomg == 7 then
+        local pos1 = { x = pos.x, y = pos.y + 1, z = pos.z }
+        generate_crimson_tree(pos1)
       end
     else
       minetest.swap_node({ x = pos.x, y = pos.y, z = pos.z }, { name = "mcl_nether:netherrack" })
